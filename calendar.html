@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalendarz wydarzeń</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h2>Kalendarz wydarzeń sportowych</h2>
+    <ul id="calendar-list"></ul>
+    <form action="add_event.php" method="POST">
+      <h3>Dodaj wydarzenie</h3>
+      <input type="text" name="title" placeholder="Tytuł wydarzenia" required><br>
+      <input type="date" name="date" required><br>
+      <button type="submit">Dodaj</button>
+    </form>
+    <p><a href="index.html">Powrót</a></p>
+  </main>
+  <script>
+    fetch('calendar.json')
+      .then(response => response.json())
+      .then(data => {
+        const list = document.getElementById('calendar-list');
+        data.forEach(event => {
+          const li = document.createElement('li');
+          li.textContent = event.date + ' - ' + event.title;
+          list.appendChild(li);
+        });
+      });
+  </script>
+</body>
+</html>

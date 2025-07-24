@@ -1,0 +1,5 @@
+body { font-family: Arial, sans-serif; background: #eef; padding: 20px; }
+header { background: #003366; color: white; padding: 10px; }
+main { background: white; padding: 20px; max-width: 600px; margin: 20px auto; border-radius: 8px; }
+input, select { margin-bottom: 10px; width: 100%; padding: 5px; }
+button { padding: 8px 16px; }

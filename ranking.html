@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Ranking</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h2>Ranking zawodników</h2>
+    <ul id="ranking-list"></ul>
+    <form action="add_player.php" method="POST">
+      <h3>Dodaj zawodnika</h3>
+      <input type="text" name="name" placeholder="Imię i nazwisko" required><br>
+      <input type="number" name="points" placeholder="Punkty" required><br>
+      <button type="submit">Dodaj</button>
+    </form>
+    <p><a href="index.html">Powrót</a></p>
+  </main>
+  <script>
+    fetch('ranking.json')
+      .then(response => response.json())
+      .then(data => {
+        const list = document.getElementById('ranking-list');
+        data.forEach(player => {
+          const li = document.createElement('li');
+          li.textContent = player.name + ' - ' + player.points + ' pkt';
+          list.appendChild(li);
+        });
+      });
+  </script>
+</body>
+</html>
